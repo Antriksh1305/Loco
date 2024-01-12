@@ -1,5 +1,5 @@
 import { API } from '../../apis';
 
-export const signup = () => {
+export const signup = ({  }) => {
     console.log(API.BASE_URL + API.REGISTER);
 };

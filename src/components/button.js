@@ -5,6 +5,7 @@ const button = ({ title, styleBox, styleTxt, onPress }) => {
     return (
         <>
             <TouchableOpacity
+                activeOpacity={0.55}
                 style={styleBox}
                 onPress={onPress}>
                 <View>

@@ -12,7 +12,7 @@ const App = () => {
   const [user, setUser] = React.useState({});
   return (
     <User.Provider value={[user, setUser]}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.primary} />
+      <StatusBar barStyle="dark-content" translucent={true} backgroundColor={'transparent'} />
       <StackNavigation />
     </User.Provider>
   );
