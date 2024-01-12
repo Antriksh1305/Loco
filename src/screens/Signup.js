@@ -93,13 +93,12 @@ const styles = {
         flex: 1,
     },
     SceneryImage: {
-        position: 'absolute',
-        top: 0,
         width: width,
         height: 262,
     },
     BottomSheet: {
-        flex: 2.42,
+        marginTop: 30,
+        height: height * 0.75,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         paddingHorizontal: 25,
