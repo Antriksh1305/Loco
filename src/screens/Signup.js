@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView } from 'react-native';
 import User from '../context/user';
 
 // functions
-import { signup } from '../functions/auth/signUp';
+import { signup } from '../functions/auth/signup';
 import { handleCameraLaunch } from '../functions/signup/camera';
 import { openImagePicker } from '../functions/signup/imagePicker';
 
