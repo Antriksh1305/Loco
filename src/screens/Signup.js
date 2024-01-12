@@ -3,10 +3,11 @@ import { Text, View, Button } from 'react-native';
 import User from '../context/user';
 
 // functions
-import { signup } from '../functions/auth/signup';
+import { signup } from '../functions/auth/signUp';
 
 const Signup = () => {
     const [user, setUser] = useContext(User);
+    const [selectedImage, setSelectedImage] = React.useState(null);
 
     return (
         <View>
