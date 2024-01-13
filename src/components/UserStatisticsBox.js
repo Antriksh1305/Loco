@@ -2,12 +2,11 @@ import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 
 // assets
-import { images } from '../../assets/images';
 import { fonts } from '../../assets/fonts';
 
 // constants
 import { Colors } from '../constants/colors';
-import { SCREEN_WIDTH as width, SCREEN_HEIGHT as height } from '../constants/screen';
+import { SCREEN_WIDTH as width } from '../constants/screen';
 
 const StatisticsBox = ({ image, title, count }) => {
     return (
@@ -25,10 +24,10 @@ const StatisticsBox = ({ image, title, count }) => {
 
 const styles = StyleSheet.create({
     main: {
-        width: 342,
-        height: 60,
-        marginBottom: 20,
-        borderRadius: 24,
+        width: width / 1.143,
+        height: width / 6.512,
+        marginBottom: width / 19.55,
+        borderRadius: width / 16.29,
         shadowColor: '#000',
         elevation: 5,
         shadowRadius: 10,
@@ -38,8 +37,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: 20,
-        borderRadius: 24,
+        paddingHorizontal: width / 19.55,
+        borderRadius: width / 16.29,
         borderWidth: 0,
         backgroundColor: Colors.primary,
     },
@@ -49,18 +48,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     icon: {
-        width: 18,
-        height: 18,
-        marginRight: 18,
+        width: width / 21.72,
+        height: width / 21.72,
+        marginRight: width / 21.72,
     },
     text: {
         fontFamily: fonts.medium,
-        fontSize: 16,
+        fontSize: width / 24.4375,
         color: Colors.text,
     },
     number: {
         fontFamily: fonts.medium,
-        fontSize: 20,
+        fontSize: width / 19.55,
         color: Colors.text,
     },
 });

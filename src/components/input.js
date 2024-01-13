@@ -3,6 +3,7 @@ import { View, TextInput } from 'react-native';
 
 // constants
 import { Colors } from '../constants/colors';
+import { SCREEN_WIDTH as width } from '../constants/screen';
 
 // assets
 import { fonts } from '../../assets/fonts';
@@ -25,20 +26,20 @@ const Input = ({ value, onChangeText, placeholder, secureTextEntry }) => {
 
 const styles = {
     main: {
-        marginBottom: 20,
+        marginBottom: width / 19.55,
         width: '100%',
-        height: 50,
+        height: width / 7.82,
         backgroundColor: Colors.input,
         borderColor: Colors.grayborder,
         borderWidth: 1,
-        borderRadius: 24,
+        borderRadius: width / 16.29,
     },
     input: {
         flex: 1,
         color: Colors.text,
-        fontSize: 16,
+        fontSize: width / 24.4375,
         fontFamily: fonts.medium,
-        paddingHorizontal: 20,
+        paddingHorizontal: width / 19.55,
     },
 };
 

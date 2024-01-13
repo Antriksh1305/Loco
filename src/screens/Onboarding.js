@@ -6,7 +6,7 @@ import { navigate } from '../navigators/Root';
 
 // constants
 import { Colors } from '../constants/colors';
-import { SCREEN_WIDTH as width } from '../constants/screen';
+import { SCREEN_WIDTH as width, SCREEN_HEIGHT as height } from '../constants/screen';
 
 // assets
 import { fonts } from '../../assets/fonts';
@@ -55,11 +55,11 @@ const styles = {
         width: width,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 50,
+        marginBottom: height / 15.86,
     },
     subCont2: {
         position: 'absolute',
-        bottom: 55,
+        bottom: height / 14.42,
         width: width,
         justifyContent: 'center',
         alignItems: 'center',
@@ -70,13 +70,13 @@ const styles = {
     },
     AppNameTxt: {
         fontFamily: fonts.bold,
-        fontSize: 36,
+        fontSize: width / 10.86,
         color: Colors.secondary,
-        paddingBottom: 10,
+        paddingBottom: width / 39.1,
     },
     AppDescTxt: {
         fontFamily: fonts.regular,
-        fontSize: 15,
+        fontSize: width / 26.06,
         color: Colors.text,
     },
     OnboardingImage: {
@@ -85,31 +85,31 @@ const styles = {
     },
     btnBox: {
         backgroundColor: Colors.secondary,
-        width: 342,
-        height: 59,
-        borderRadius: 24,
+        width: width / 1.143,
+        height: width / 6.62,
+        borderRadius: width / 16.29,
         justifyContent: 'center',
         alignItems: 'center',
     },
     btnTxt: {
         fontFamily: fonts.bold,
-        fontSize: 17,
+        fontSize: width / 23,
         color: Colors.primary,
     },
     LoginBox: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: width / 19.55,
     },
     LoginTxt1: {
         fontFamily: fonts.regular,
-        fontSize: 15,
+        fontSize: width / 26.06,
         color: Colors.text,
     },
     LoginTxt2: {
         fontFamily: fonts.bold,
-        fontSize: 15,
+        fontSize: width / 26.06,
         color: Colors.text,
         marginLeft: 6,
     },

@@ -22,7 +22,7 @@ export const handleSubmit = async ({ user, setIsSubmitting, setUserToken }) => {
             data.append('profile_picture', {
                 uri: uri,
                 type: type,
-                name: `profile_picture.${getFileExtension(uri)}`,
+                name: `profile_pic_${user.email}.${getFileExtension(uri)}`,
             });
         }
 

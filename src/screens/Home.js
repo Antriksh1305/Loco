@@ -16,7 +16,7 @@ import { fonts } from '../../assets/fonts';
 
 // constants
 import { Colors } from '../constants/colors';
-import { SCREEN_WIDTH as width, SCREEN_HEIGHT as height } from '../constants/screen';
+import { SCREEN_WIDTH as width } from '../constants/screen';
 
 // components
 import StatisticsBox from '../components/UserStatisticsBox';
@@ -41,7 +41,7 @@ const Home = () => {
     };
 
     React.useEffect(() => {
-        const getUser = async (userToken) => {
+        const getUser = async () => {
             setLoading(true);
             try {
                 const response = await fetch(API.BASE_URL + '/', {
@@ -63,7 +63,6 @@ const Home = () => {
             }
         };
         getUser(userToken);
-        // getLocation({ userToken, setUser });
     }, [userToken]);
 
     const Arr = [
@@ -157,8 +156,8 @@ const styles = {
         backgroundColor: Colors.primary_dark,
     },
     ScreenHeader: {
-        paddingVertical: 15,
-        paddingTop: 50,
+        paddingVertical: width / 26.06,
+        paddingTop: width / 7.82,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: Colors.primary,
@@ -169,7 +168,7 @@ const styles = {
     },
     ScreenHeaderTxt: {
         fontFamily: fonts.medium,
-        fontSize: 18,
+        fontSize: width / 21.72,
         color: Colors.text,
     },
     ProfileInfoBox: {
@@ -177,47 +176,47 @@ const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 30,
+        marginTop: width / 13.03,
     },
     UserProfilePic: {
-        width: 130,
-        height: 130,
+        width: width / 3,
+        height: width / 3,
         borderRadius: 100,
     },
     UserInfoBox: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
+        marginTop: width / 19.55,
     },
     UserNameTxt: {
         fontFamily: fonts.semiBold,
-        fontSize: 24,
+        fontSize: width / 16.3,
         color: Colors.text,
     },
     UserLocationBox: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 3,
+        marginTop: width / 130.33,
     },
     LocationArrowImg: {
-        width: 14,
-        height: 14,
+        width:width / 27.92,
+        height: width / 27.92,
         marginRight: 5,
     },
     UserCityTxt: {
         fontFamily: fonts.semiBold,
-        fontSize: 12,
+        fontSize: width / 32.583,
         color: Colors.text,
     },
     UserInfoBgBox: {
-        marginTop: 20,
-        width: 342,
-        height: 100,
+        marginTop: width / 19.55,
+        width: width / 1.143,
+        height: width / 3.91,
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 24,
+        borderRadius: width / 16.3,
         backgroundColor: Colors.primary,
         shadowColor: Colors.text,
         shadowOpacity: 1,
@@ -225,10 +224,10 @@ const styles = {
         shadowRadius: 20,
     },
     UserInfoBgInside: {
-        width: 325,
-        height: 80,
+        width: width / 1.203,
+        height: width / 4.8875,
         justifyContent: 'center',
-        borderRadius: 24,
+        borderRadius: width / 16.29,
         backgroundColor: Colors.primary,
         shadowColor: Colors.text,
         shadowOpacity: 1,
@@ -239,48 +238,47 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: 20,
-        paddingRight: 30,
-        backgroundColor: Colors.white,
+        paddingLeft: width / 19.55,
+        paddingRight: width / 13.03,
     },
     commonVTxt: {
         fontFamily: fonts.semiBold,
-        fontSize: 20,
+        fontSize: width / 19.55,
         color: Colors.text,
     },
     UserInfoHeaders: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: 20,
-        paddingRight: 30,
-        paddingVertical: 5,
+        paddingLeft: width / 19.55,
+        paddingRight: width / 13.03,
+        paddingVertical: width / 78.2,
     },
     commonHTxt: {
         fontFamily: fonts.semiBold,
-        fontSize: 13,
+        fontSize: width / 30.08,
         color: Colors.text,
     },
     StatsHeader: {
         alignItems: 'flex-start',
-        marginTop: 30,
-        paddingHorizontal: 30,
+        marginTop: width / 13.03,
+        paddingHorizontal: width / 13.03,
     },
     StatsHeaderTxt: {
         fontFamily: fonts.semiBold,
-        fontSize: 13,
+        fontSize: width / 30.08,
         color: Colors.text,
     },
     StatsInfosBox: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 25,
+        marginTop: width / 15.64,
     },
     tabBarBox: {
         width,
         position: 'absolute',
         bottom: 0,
-        paddingVertical: 10,
+        paddingVertical: width / 39.1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
@@ -291,14 +289,14 @@ const styles = {
         shadowRadius: 30,
     },
     blackCircle: {
-        width: 22,
-        height: 22,
-        borderRadius: 25,
+        width: width / 17.77,
+        height: width / 17.77,
+        borderRadius: width / 15.64,
         backgroundColor: Colors.text,
     },
     PlusIcon: {
-        width: 50,
-        height: 50,
+        width: width / 7.82,
+        height: width / 7.82,
     },
     modalContainer: {
         flex: 1,
@@ -307,26 +305,26 @@ const styles = {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     modalContent: {
-        width: 343,
-        padding: 20,
-        borderRadius: 40,
+        width: width / 1.14,
+        padding: width / 19.55,
+        borderRadius: width / 9.775,
         borderWidth: 0,
         backgroundColor: Colors.primary,
     },
     modalTitle: {
         textAlign: 'left',
-        paddingHorizontal: 10,
+        paddingHorizontal: width / 39.1,
         fontFamily: fonts.medium,
-        fontSize: 20,
-        marginBottom: 10,
+        fontSize: width / 19.55,
+        marginBottom: width / 39.1,
         color: Colors.warningLight,
     },
     modalDescription: {
-        paddingHorizontal: 10,
+        paddingHorizontal: width / 39.1,
         textAlign: 'left',
         fontFamily: fonts.regular,
-        fontSize: 15,
-        marginBottom: 20,
+        fontSize: width / 26.06,
+        marginBottom: width / 19.55,
         color: Colors.text,
     },
     modalButtons: {
@@ -334,31 +332,32 @@ const styles = {
         justifyContent: 'space-between',
     },
     allowButton: {
-        marginLeft: 10,
+        marginLeft: width / 39.1,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: Colors.secondary,
-        padding: 8,
-        paddingHorizontal: 15,
-        borderRadius: 24,
+        padding: width / 48.875,
+        paddingHorizontal: width / 26.067,
+        borderRadius: width / 16.29,
     },
     logoutButton: {
+        marginRight: width / 39.1,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: Colors.warning,
-        padding: 8,
-        paddingHorizontal: 15,
-        borderRadius: 24,
+        padding: width / 48.875,
+        paddingHorizontal: width / 26.067,
+        borderRadius: width / 16.29,
     },
     buttonText: {
         fontFamily: fonts.semiBold,
-        fontSize: 14,
-        marginLeft: 5,
+        fontSize: width / 27.92,
+        marginLeft: width / 78.2,
         color: Colors.primary,
     },
     buttonIcon: {
-        width: 20,
-        height: 20,
+        width: width / 19.55,
+        height: width / 19.55,
     },
 };
 
