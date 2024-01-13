@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Text, View, Image, ActivityIndicator } from 'react-native';
 import User from '../context/user';
 // functions
-import { login } from '../functions/auth/logIn';
+import { login } from '../functions/auth/login';
 
 // assets
 import { images } from '../../assets/images';
