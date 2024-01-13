@@ -1,6 +1,6 @@
 import { launchImageLibrary } from 'react-native-image-picker';
 
-export const openImagePicker = ({ setSelectedImage }) => {
+export const openImagePicker = ({ user, setUser }) => {
     const options = {
         mediaType: 'photo',
         includeBase64: false,
@@ -15,7 +15,9 @@ export const openImagePicker = ({ setSelectedImage }) => {
             console.log('Image picker error: ', response.error);
         } else {
             let imageUri = response.uri || response.assets?.[0]?.uri;
-            setSelectedImage(imageUri);
+            // setSelectedImage(imageUri);
+            setUser({ ...user, profile_picture: imageUri });
+            console.log(imageUri);
         }
     });
 };

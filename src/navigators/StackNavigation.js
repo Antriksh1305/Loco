@@ -7,6 +7,7 @@ import { navigationRef } from './Root';
 import Onboarding from '../screens/Onboarding';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
+import Home from '../screens/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const StackNavigation = () => {
                 <Stack.Screen name="Onboarding" component={Onboarding} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
+                <Stack.Screen name="Home" component={Home} />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, ActivityIndicator } from 'react-native';
 import User from '../context/user';
 
 // functions
@@ -21,6 +21,7 @@ const Login = () => {
     const [user, setUser] = useContext(User);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const Arr = [
         { 'value': email, 'onChangeText': setEmail, 'placeholder': 'Email', 'secureTextEntry': false },
@@ -29,9 +30,9 @@ const Login = () => {
 
     return (
         <View style={styles.main}>
-            {/* <View style={styles.UpperCont}> */}
+            <View style={styles.UpperCont}>
                 <Image source={images.Scenery} style={styles.SceneryImage} />
-            {/* </View> */}
+            </View>
             <View style={styles.BottomSheet}>
                 <View style={styles.holder} />
                 <View>
@@ -55,9 +56,13 @@ const Login = () => {
                         }
                     </View>
                     <View style={styles.BtnContainer}>
-                        <Button title={'Login'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                            login({ email, password, setUser });
-                        }} />
+                        {isSubmitting ? (
+                            <ActivityIndicator size="large" color={Colors.secondary} style={styles.Spinner} />
+                        ) : (
+                            <Button title={'Login'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
+                                login({ email, password, setIsSubmitting });
+                            }} />
+                        )}
                     </View>
                 </View>
             </View>

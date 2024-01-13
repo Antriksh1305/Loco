@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Text, View, Image, ScrollView } from 'react-native';
+import { Text, View, Image, ActivityIndicator } from 'react-native';
 import User from '../context/user';
 
 // functions
-import { signup } from '../functions/auth/signup';
+import { handleSubmit } from '../functions/auth/signup';
 import { handleCameraLaunch } from '../functions/signup/camera';
 import { openImagePicker } from '../functions/signup/imagePicker';
 
@@ -21,17 +21,13 @@ import Input from '../components/input';
 
 const Signup = () => {
     const [user, setUser] = useContext(User);
-    const [selectedImage, setSelectedImage] = React.useState(null);
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [age, setAge] = React.useState('');
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const Arr = [
-        {'value': name, 'onChangeText': setName ,'placeholder': 'Name', 'secureTextEntry': false},
-        {'value': email, 'onChangeText': setEmail ,'placeholder': 'Email', 'secureTextEntry': false},
-        {'value': password, 'onChangeText': setPassword ,'placeholder': 'Password', 'secureTextEntry': true},
-        {'value': age, 'onChangeText': setAge ,'placeholder': 'Age', 'secureTextEntry': false},
+        { 'value': user.name, 'onChangeText': (text) => setUser({ ...user, name: text }) ,'placeholder': 'Name', 'secureTextEntry': false},
+        { 'value': user.email, 'onChangeText': (text) => setUser({ ...user, email: text }) ,'placeholder': 'Email', 'secureTextEntry': false},
+        { 'value': user.password, 'onChangeText': (text) => setUser({ ...user, password: text }) ,'placeholder': 'Password', 'secureTextEntry': true},
+        { 'value': user.age, 'onChangeText': (text) => setUser({ ...user, age: text }) ,'placeholder': 'Age', 'secureTextEntry': false},
     ];
 
     return (
@@ -55,10 +51,10 @@ const Signup = () => {
                             </View>
                             <View style={styles.CameraBtnBox}>
                                 <Button title={'Take Picture'} styleBox={styles.camPressBox} styleTxt={styles.camPressTxt} onPress={() => {
-                                    handleCameraLaunch({ setSelectedImage });
+                                    handleCameraLaunch({ user, setUser });
                                 }} />
                                 <Button title={'Upload'} styleBox={styles.camPressBox} styleTxt={styles.camPressTxt} onPress={() => {
-                                    openImagePicker({ setSelectedImage });
+                                    openImagePicker({ user, setUser });
                                 }} />
                             </View>
                         </View>
@@ -75,9 +71,14 @@ const Signup = () => {
                         }
                     </View>
                     <View style={styles.BtnContainer}>
-                        <Button title={'Create Account'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                            signup({ name, email, password, age, selectedImage, setUser });
-                        }} />
+                        {isSubmitting ? (
+                            <ActivityIndicator size="large" color={Colors.secondary} style={styles.Spinner} />
+                        ) : (
+                            // Show the button when not submitting
+                            <Button title={'Create Account'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
+                                handleSubmit({ user, setIsSubmitting });
+                            }} />
+                        )}
                     </View>
                 </View>
             </View>
@@ -160,6 +161,9 @@ const styles = {
         fontFamily: fonts.regular,
         fontSize: 16,
         color: Colors.text,
+    },
+    Spinner: {
+        marginTop: 20,
     },
     btnBox: {
         width: 342,
