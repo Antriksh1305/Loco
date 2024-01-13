@@ -4,5 +4,5 @@ export const API = {
     'REGISTER': '/register',
     'TOKEN_VALIDITY': '/tokenIsValid',
     'GET_USER': '/',
-    'ADD_COORDINATES': '/addCoordinates',
+    'LOCATION': '/addCoordinates',
 };

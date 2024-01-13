@@ -20,7 +20,14 @@ import Button from '../components/button';
 import Input from '../components/input';
 
 const Signup = () => {
-    const [user, setUser] = useContext(User);
+    const [userToken, setUserToken] = useContext(User);
+    const [user, setUser] = React.useState({
+        'name': '',
+        'email': '',
+        'password': '',
+        'age': '',
+        'profile_picture': '',
+    });
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
     const Arr = [
@@ -43,7 +50,7 @@ const Signup = () => {
                     </View>
                     <View style={styles.ProfileBox}>
                         <View style={styles.AvatarImgBox}>
-                            <Image source={images.avatar} style={styles.AvatarImg} />
+                            <Image source={user.profile_picture ? { uri: user.profile_picture } : images.avatar} style={styles.AvatarImg} />
                         </View>
                         <View style={styles.ProfileBoxBtns}>
                             <View>
@@ -76,7 +83,7 @@ const Signup = () => {
                         ) : (
                             // Show the button when not submitting
                             <Button title={'Create Account'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                                handleSubmit({ user, setIsSubmitting });
+                                handleSubmit({ user, setIsSubmitting, setUserToken });
                             }} />
                         )}
                     </View>

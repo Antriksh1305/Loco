@@ -1,4 +1,3 @@
-import RNFS from 'react-native-fs';
 import { API } from '../../apis';
 import { navigateDispatch } from '../../navigators/Root';
 
@@ -6,7 +5,7 @@ const getFileExtension = (uri) => {
     return uri.split('.').pop();
 };
 
-export const handleSubmit = async ({ user, setIsSubmitting }) => {
+export const handleSubmit = async ({ user, setIsSubmitting, setUserToken }) => {
     try {
         setIsSubmitting(true);
         const data = new FormData();
@@ -35,6 +34,16 @@ export const handleSubmit = async ({ user, setIsSubmitting }) => {
         // Handle the response from the server
         const result = await response.json();
         console.log(result);
+        const loginResponse = await fetch(API.BASE_URL + API.LOGIN, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: user.email, password: user.password }),
+        });
+        const loginResult = await loginResponse.json();
+        setUserToken(loginResult.token);
+
         // It resets the navigation stack and redirects to the Home screen
         navigateDispatch({ index: 0, routes: [{ name: 'Home' }] });
     } catch (error) {

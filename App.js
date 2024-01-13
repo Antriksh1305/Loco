@@ -9,9 +9,9 @@ import Home from './src/screens/Home';
 import User from './src/context/user';
 
 const App = () => {
-  const [user, setUser] = React.useState({});
+  const [userToken, setUserToken] = React.useState(null);
   return (
-    <User.Provider value={[user, setUser]}>
+    <User.Provider value={[userToken, setUserToken]}>
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" translucent={true} backgroundColor={'transparent'} />
         <StackNavigation />

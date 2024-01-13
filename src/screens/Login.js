@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Text, View, Image, ActivityIndicator } from 'react-native';
 import User from '../context/user';
-
 // functions
 import { login } from '../functions/auth/logIn';
 
@@ -18,7 +17,7 @@ import Button from '../components/button';
 import Input from '../components/input';
 
 const Login = () => {
-    const [user, setUser] = useContext(User);
+    const [userToken, setUserToken] = useContext(User);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -41,7 +40,7 @@ const Login = () => {
                             <Text style={styles.LoginTxt}>Login</Text>
                         </View>
                         <View>
-                            <Image source={images.Iconuser} style={styles.Iconuser} />
+                            <Image source={images.User} style={styles.Iconuser} />
                         </View>
                     </View>
                     <View style={styles.InputContainer}>
@@ -60,7 +59,7 @@ const Login = () => {
                             <ActivityIndicator size="large" color={Colors.secondary} style={styles.Spinner} />
                         ) : (
                             <Button title={'Login'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                                login({ email, password, setIsSubmitting });
+                                login({ email, password, setIsSubmitting, setUserToken });
                             }} />
                         )}
                     </View>
