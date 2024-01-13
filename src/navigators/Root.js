@@ -26,7 +26,7 @@ export function navigatePush(name, params) {
     }
 }
 
-export function navigateDispath(screen) {
+export function navigateDispatch(screen) {
     if (navigationRef.isReady()) {
         navigationRef.dispatch(CommonActions.reset(screen));
     }

@@ -1,6 +1,6 @@
 import { launchCamera } from 'react-native-image-picker';
 
-export const handleCameraLaunch = ({ setSelectedImage }) => {
+export const handleCameraLaunch = ({ user, setUser }) => {
     const options = {
         mediaType: 'photo',
         includeBase64: false,
@@ -17,7 +17,8 @@ export const handleCameraLaunch = ({ setSelectedImage }) => {
         } else {
             // Process the captured image
             let imageUri = response.uri || response.assets?.[0]?.uri;
-            setSelectedImage(imageUri);
+            // setSelectedImage(imageUri);
+            setUser({ ...user, profile_picture: imageUri });
             console.log(imageUri);
         }
     });
