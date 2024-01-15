@@ -20,6 +20,7 @@ import { SCREEN_WIDTH as width } from '../constants/screen';
 
 // components
 import StatisticsBox from '../components/UserStatisticsBox';
+import { SnackBar } from '../components/Snackbar';
 
 const Home = () => {
     const [userToken, setUserToken] = useContext(User);
@@ -27,6 +28,7 @@ const Home = () => {
     const [loading, setLoading] = React.useState(true);
     const [locationAccess, setLocationAccess] = React.useState(false);
     const [isLocationModalVisible, setLocationModalVisible] = React.useState(true);
+    const [error, setError] = React.useState('');
 
     const handleAllowAccess = () => {
         startLocationTracking({ userToken });
@@ -53,11 +55,10 @@ const Home = () => {
                 });
 
                 const result = await response.json();
-                console.log(result);
                 setUser(result);
             }
-            catch (error) {
-                console.error('Error:', error);
+            catch (err) {
+                console.error('Error:', err);
             } finally {
                 setLoading(false);
             }
@@ -69,7 +70,7 @@ const Home = () => {
         if (locationAccess) {
             setInterval(() => {
                 startLocationTracking({ userToken });
-                console.log('Location sent');
+                // console.log('Location sent');
             }, 2000 * 60);
         }
     }, [userToken, locationAccess]);
@@ -155,6 +156,7 @@ const Home = () => {
                     </View>
                 </View>
             </Modal>
+            <SnackBar error={error} setError={setError} />
         </View>
     );
 };

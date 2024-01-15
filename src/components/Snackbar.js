@@ -6,7 +6,6 @@ import { Snackbar } from 'react-native-paper';
 
 // Constants
 import { Colors } from '../constants/colors';
-import { SCREEN_WIDTH as width } from '../constants/screen';
 
 export const SnackBar = ({ error, setError }) => {
     return (

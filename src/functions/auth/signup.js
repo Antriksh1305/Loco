@@ -37,7 +37,10 @@ export const handleSubmit = async ({ user, setIsSubmitting, setUserToken, setErr
 
         // Handle the response from the server
         const result = await response.json();
-        console.log(result);
+        if (result.error) {
+            setError(result.error);
+            return;
+        }
         const loginResponse = await fetch(API.BASE_URL + API.LOGIN, {
             method: 'POST',
             headers: {
@@ -50,7 +53,7 @@ export const handleSubmit = async ({ user, setIsSubmitting, setUserToken, setErr
 
         navigateDispatch({ index: 0, routes: [{ name: 'Home' }] });
     } catch (error) {
-        console.error('Error:', error);
+        setError('Choose a different profile picture');
     } finally {
         setIsSubmitting(false);
     }
@@ -60,9 +63,11 @@ const checkCredentials = ({ user, setError }) => {
     const name = user.name;
     const email = user.email;
     const password = user.password;
-    const age = parseInt(user.age, 10);
+    const age = user.age;
     const pic = user.profile_picture;
 
+    const isValidAge = /^\d+$/.test(age);
+    // console.log(isValidAge);
     if (!name || !email || !password || !age) {
         setError('Please fill all the fields');
     }
@@ -72,7 +77,7 @@ const checkCredentials = ({ user, setError }) => {
     else if (password.length < 5) {
         setError('Password must be at least 5 characters long');
     }
-    else if (isNaN(age)) {
+    else if (!isValidAge) {
         setError('Please enter a valid age (a number)');
     }
     else if (pic === '') {

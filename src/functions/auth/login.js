@@ -21,7 +21,7 @@ export const login = async ({ email, password, setIsSubmitting, setUserToken, se
             setError(result.error);
             return;
         }
-        console.log(result);
+        // console.log(result);
         tokenValidity({ token: result.token, setIsSubmitting, setUserToken, setError });
     }
     catch (error) {
@@ -44,13 +44,13 @@ export const tokenValidity = async ({ token, setIsSubmitting, setUserToken, setE
 
         const status = await response.status;
         if (status === 200) {
-            console.log('token is valid');
+            // console.log('token is valid');
             setUserToken(token);
             navigateDispatch({ index: 0, routes: [{ name: 'Home' }] });
         }
         else {
             setError('Invalid Credentials');
-            console.log('token is invalid');
+            // console.log('token is invalid');
         }
     }
     catch (error) {
