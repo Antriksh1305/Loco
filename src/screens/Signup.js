@@ -18,9 +18,9 @@ import { SCREEN_WIDTH as width, SCREEN_HEIGHT as height } from '../constants/scr
 // components
 import Button from '../components/button';
 import Input from '../components/input';
+import { SnackBar } from '../components/Snackbar';
 
 const Signup = () => {
-    console.log(width, height);
     const [userToken, setUserToken] = useContext(User);
     const [user, setUser] = React.useState({
         'name': '',
@@ -30,6 +30,7 @@ const Signup = () => {
         'profile_picture': '',
     });
     const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [error, setError] = React.useState('');
 
     const Arr = [
         { 'value': user.name, 'onChangeText': (text) => setUser({ ...user, name: text }) ,'placeholder': 'Name', 'secureTextEntry': false},
@@ -84,12 +85,13 @@ const Signup = () => {
                         ) : (
                             // Show the button when not submitting
                             <Button title={'Create Account'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                                handleSubmit({ user, setIsSubmitting, setUserToken });
+                                handleSubmit({ user, setIsSubmitting, setUserToken, setError });
                             }} />
                         )}
                     </View>
                 </View>
             </View>
+            <SnackBar error={error} setError={setError} />
         </View>
     );
 };

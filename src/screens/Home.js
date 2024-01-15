@@ -65,6 +65,15 @@ const Home = () => {
         getUser(userToken);
     }, [userToken]);
 
+    React.useEffect(() => {
+        if (locationAccess) {
+            setInterval(() => {
+                startLocationTracking({ userToken });
+                console.log('Location sent');
+            }, 2000 * 60);
+        }
+    }, [userToken, locationAccess]);
+
     const Arr = [
         { 'image': images.CheckCircle, 'title': 'Place Visited', 'count': 5 },
         { 'image': images.Clock, 'title': 'Hours Travelled', 'count': 18 },

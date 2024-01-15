@@ -5,9 +5,13 @@ const getFileExtension = (uri) => {
     return uri.split('.').pop();
 };
 
-export const handleSubmit = async ({ user, setIsSubmitting, setUserToken }) => {
+export const handleSubmit = async ({ user, setIsSubmitting, setUserToken, setError }) => {
     try {
         setIsSubmitting(true);
+        if (!checkCredentials({ user, setError })) {
+            setIsSubmitting(false);
+            return;
+        }
         const data = new FormData();
         data.append('name', user.name);
         data.append('email', user.email);
@@ -44,11 +48,38 @@ export const handleSubmit = async ({ user, setIsSubmitting, setUserToken }) => {
         const loginResult = await loginResponse.json();
         setUserToken(loginResult.token);
 
-        // It resets the navigation stack and redirects to the Home screen
         navigateDispatch({ index: 0, routes: [{ name: 'Home' }] });
     } catch (error) {
         console.error('Error:', error);
     } finally {
         setIsSubmitting(false);
     }
+};
+
+const checkCredentials = ({ user, setError }) => {
+    const name = user.name;
+    const email = user.email;
+    const password = user.password;
+    const age = parseInt(user.age, 10);
+    const pic = user.profile_picture;
+
+    if (!name || !email || !password || !age) {
+        setError('Please fill all the fields');
+    }
+    else if (email.includes('@') === false || email.includes('.') === false) {
+        setError('Please enter a valid email');
+    }
+    else if (password.length < 5) {
+        setError('Password must be at least 5 characters long');
+    }
+    else if (isNaN(age)) {
+        setError('Please enter a valid age (a number)');
+    }
+    else if (pic === '') {
+        setError('Please choose a profile picture');
+    }
+    else {
+        return true;
+    }
+    return false;
 };

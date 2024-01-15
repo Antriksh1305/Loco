@@ -15,12 +15,14 @@ import { SCREEN_WIDTH as width, SCREEN_HEIGHT as height } from '../constants/scr
 // components
 import Button from '../components/button';
 import Input from '../components/input';
+import { SnackBar } from '../components/Snackbar';
 
 const Login = () => {
     const [userToken, setUserToken] = useContext(User);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [error, setError] = React.useState('');
 
     const Arr = [
         { 'value': email, 'onChangeText': setEmail, 'placeholder': 'Email', 'secureTextEntry': false },
@@ -59,12 +61,13 @@ const Login = () => {
                             <ActivityIndicator size="large" color={Colors.secondary} style={styles.Spinner} />
                         ) : (
                             <Button title={'Login'} styleBox={styles.btnBox} styleTxt={styles.btnTxt} onPress={() => {
-                                login({ email, password, setIsSubmitting, setUserToken });
+                                login({ email, password, setIsSubmitting, setUserToken, setError });
                             }} />
                         )}
                     </View>
                 </View>
             </View>
+            <SnackBar error={error} setError={setError} />
         </View>
     );
 };
