@@ -14,7 +14,7 @@ Loco is a React Native application designed for real-time location tracking. The
 
 ## 📱 Download the App and Experience It Yourself!
 <p align="left">
-  <a href="https://drive.google.com/drive/folders/1DFvVKilkLTNbyo7SHywKfcmqGQ_SkTgJ?usp=sharing" target="_blank">
+  <a href="https://drive.google.com/file/d/1hmN5krclZ_fzQBreBifokDJUKhQBlltJ/view?usp=drive_link" target="_blank">
     <img src="https://img.shields.io/badge/Download-APK%20File-orange" alt="Download APK" />
   </a>
 </p>
